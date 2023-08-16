@@ -8,7 +8,6 @@ class Welcome extends CI_Controller {
 		
 		function index()
 		{		
-			$page_data['system']  	  = 'payrollSoft';
 			$page_data['page_title']  = 'Login';
 			$this->load->view('index',$page_data);	
 		}

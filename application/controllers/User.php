@@ -6,8 +6,46 @@ class User extends CI_Controller {
 		{
 			parent::__construct();
 		}
+		
+		function add_user() {
+			$data = array(
+				'name' => $this->input->post('name'), 
+				'email' => $this->input->post('email'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+				'phone' => $this->input->post('phone'),
+7
+				// Add more fields as needed
+			);
+	
+			$inserted_id = $this->User_model->add_user($data);
+			
+			if ($inserted_id) {
+				// Successful insertion
+				// You can redirect or show a success message here
+			} else {
+				// Failed insertion
+				// You can redirect or show an error message here
+			}
+		}
+
 
 		
+
+
+
+
+
+
+
+
+
+
+			
 		
 function index()
 {

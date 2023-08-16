@@ -7,41 +7,31 @@ class Login extends CI_Controller {
 		parent::__construct(); 
 	} 
 
-	
-	
-	function signin()
+	function authenticate()
 	{   
 		if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))
 				{
 					$username	=	$this->input->post('username');
 					$password	=	MD5($this->input->post('password'));			  
-					$admin      =   $this->db->query("SELECT * FROM users WHERE username='$username' AND password='$password'");
-					$row = $admin->row();
-						if (isset($row))
-						{
-								
-									$username   =	$row->username;
-									$password	=	$row->password;
-									$fname		=	$row->fname;
-									$lname		=	$row->lname;
-									$userId	=	$row->userId;
-													
-									$this->session->set_userdata('user_login', '1');
-									$this->session->set_userdata('userId',$userId);
-									$this->session->set_userdata('account_type','admin');
-									redirect(base_url() .'User/dashboard', 'refresh');
-						}
+					$findUser      =   $this->M_user->authenticate($username,$password);        
+					if ($findUser) {
+						$username   =	$findUser->username;
+						$name		=	$findUser->name;
+						$userId	=	$findUser->userId;
+						$role	=	$findUser->role;
 
-								$page_data['system']  	  = 'Parcel';
-								$page_data['page_title']  = 'Login';
-								$this->session->set_flashdata('message','Invalid Username or Password');
-								return $this->load->view('index',$page_data);
+						$this->session->set_userdata('user_login', '1');
+						$this->session->set_userdata('userId',$userId);
+						$this->session->set_userdata('account_type',$role);
+						redirect(base_url() .'User/dashboard', 'refresh');
+					} else {
+						$page_data['page_title']  = 'Login';
+						$this->session->set_flashdata('message','Invalid Username or Password');
+						return $this->load->view('index',$page_data);
+					}
 										   
 				}
-				
-				
+						
 	}
-	
-
 	
 }
