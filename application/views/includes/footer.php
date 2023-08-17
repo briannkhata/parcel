@@ -1,6 +1,6 @@
 <div class="page-footer">
 		<div class="page-footer-inner">
-			 <?=date('Y');?> &copy; <strong style="color:blue">Powered by Infocus Malawi</strong>
+			 2017 &copy; <strong style="color:blue">Bix Technologies Limited</strong>
 		</div>
 		<div class="scroll-to-top">
 			<i class="icon-arrow-up"></i>

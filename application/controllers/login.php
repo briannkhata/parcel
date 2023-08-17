@@ -22,7 +22,7 @@ class Login extends CI_Controller {
 
 						$this->session->set_userdata('user_login', 1);
 						$this->session->set_userdata('userId',$userId);
-						$this->session->set_userdata('account_type',$role);
+						$this->session->set_userdata('role',$role);
 						redirect(base_url() .'User', 'refresh');
 					} else {
 						$page_data['page_title']  = 'Login';

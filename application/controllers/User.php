@@ -14,6 +14,9 @@ class User extends CI_Controller {
 
 		function index()
 		{
+			var_dump($this->session->userdata('role'));
+			return;
+
 			$this->check_session();
 			$page_data['page_title']  = 'Dashboard';
 			$this->load->view($this->session->userdata('role').'/index',$page_data);		
@@ -21,8 +24,7 @@ class User extends CI_Controller {
 
 		function get_users()
 		{
-			if ($this->session->userdata('user_login') != 1)
-			redirect(base_url());
+			$this->check_session();
 			$page_data['page_title']  = 'System Users';
 			$page_data['users']  = $this->M_user->get_users();
 			$this->load->view($this->session->userdata('role').'/users',$page_data);		
@@ -64,6 +66,7 @@ class User extends CI_Controller {
 	
 		function save()
 		{
+			$this->check_session();
 			$data = $this->get_data_from_post();
 			$update_id = $this->input->post('update_id', TRUE);
 			if (isset($update_id)){
@@ -83,6 +86,7 @@ class User extends CI_Controller {
 	
 		function read()
 		{
+			$this->check_session();
 			$update_id = $this->uri->segment(3);
 			if(!isset($update_id)){
 				$update_id = $this->input->post('update_id',$update_id);
@@ -100,6 +104,7 @@ class User extends CI_Controller {
 		}
 
 		function delete($param=''){
+			$this->check_session();
 			$data['deleted'] =  0;
 			$this->db->update_user('tblusers', $param, $data);
 			$this->session->set_flashdata('message','User disabled successfully');
