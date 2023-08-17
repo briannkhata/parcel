@@ -14,9 +14,6 @@ class User extends CI_Controller {
 
 		function index()
 		{
-			var_dump($this->session->userdata('role'));
-			return;
-
 			$this->check_session();
 			$page_data['page_title']  = 'Dashboard';
 			$this->load->view($this->session->userdata('role').'/index',$page_data);		
