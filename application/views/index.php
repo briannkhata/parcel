@@ -27,9 +27,9 @@
 </head>
 
 <body class="page-md login">
-<div class="logo">
-	<h1 class="text-primary"><?=$this->db->get('tblsettings')->row()->system;?></h1>
-</div> <br /> 
+    <div class="logo">
+        <h1 class="text-primary"><?=$this->db->get('tblsettings')->row()->system;?></h1>
+    </div> <br />
     <div class="menu-toggler sidebar-toggler">
     </div>
     <div class="content">
@@ -51,7 +51,7 @@
                 <div class="input-icon"> <b style="color:white;">Password</b>
                     <i class="fa fa-lock"></i>
                     <input class="form-control placeholder-no-fix" type="password" autocomplete="off"
-                        placeholder="Password" name="password"  required/>
+                        placeholder="Password" name="password" required />
                 </div>
             </div>
             <div class="form-actions">
@@ -97,16 +97,10 @@
         Layout.init(); // init current layout
         Login.init();
         Demo.init();
-        // init background slide images
-        $.backstretch([
-            "<?=base_url();?>assets/admin/pages/media/bg/1.jpg",
-            "<?=base_url();?>assets/admin/pages/media/bg/2.jpg",
-            "<?=base_url();?>assets/admin/pages/media/bg/3.jpg",
-            "<?=base_url();?>assets/admin/pages/media/bg/4.jpg"
-        ], {
-            fade: 1000,
-            duration: 8000
-        });
+
+        $(".close").setTimeout(function() {
+            alertElement.fadeOut();
+        }, 5000);
     });
     </script>
 </body>

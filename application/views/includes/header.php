@@ -2,11 +2,7 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="utf-8"/>
-<title><?=$system;?> | <?=$page_title;?></title>
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<meta content="" name="description"/>
-<meta content="" name="author"/>
+<title><?=$this->db->get('tbl')->row()->system;?> | <?=$page_title;?></title>
 <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
 <link href="<?=base_url();?>assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
 <link href="<?=base_url();?>assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css"/>
@@ -61,18 +57,13 @@
 					<li class="separator hide">
 					</li>
 				<?php
-                    $username   = $this->db->get_where('users' , array('user_id'=>$this->session->userdata('user_id')))->row()->username;
-					$usertype_id = $this->db->get_where('users' , array('user_id'=>$this->session->userdata('user_id')))->row()->usertype_id;
-                   	$usertype   = $this->db->get_where('usertype' , array('usertype_id'=>$usertype_id))->row()->usertype;
-					$fname      = $this->db->get_where('users' , array('user_id'=>$this->session->userdata('user_id')))->row()->fname;
-                    $lname      = $this->db->get_where('users' , array('user_id'=>$this->session->userdata('user_id')))->row()->lname;   
-					$pic 		= $this->db->get_where('users' , array('user_id'=>$this->session->userdata('user_id')))->row()->photo;    
+              	$name = $this->db->get_where('tblusers', array('userid'=>$this->session->userdata('userid')))->row()->name;
                 ?>
 	
 					<li class="dropdown dropdown-user dropdown-dark">
 						<a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
 						<span class="username username-hide-on-mobile">
-						<?=$fname.'   '.$lname;?></span>
+						<?=$name;?></span>
 						<!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
 						</a>
 						<ul class="dropdown-menu dropdown-menu-default">

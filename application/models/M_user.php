@@ -7,6 +7,18 @@ class M_user extends CI_Model {
 			parent::__construct();
 		}
 		
+		function get_users() {
+			$this->db->select('*')
+			->from('tblusers')
+			->where('userid !=', $this->session->userdata('userid'));
+      		$query = $this->db->get();
+			if ($query->num_rows() > 0) {
+				return $query->result_array(); 
+			} else {
+				return null;
+			}
+		}
+
 		function authenticate($username, $password) {
 			$this->db->select('*')
 			->from('tblusers')

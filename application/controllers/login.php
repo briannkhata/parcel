@@ -12,7 +12,7 @@ class Login extends CI_Controller {
 		if (isset($_POST['login']) && !empty($_POST['username']) && !empty($_POST['password']))
 				{
 					$username	=	$this->input->post('username');
-					$password	=	MD5($this->input->post('password'));			  
+					$password	=	$this->input->post('password');			  
 					$findUser      =   $this->M_user->authenticate($username,$password);        
 					if ($findUser) {
 						$username   =	$findUser->username;
@@ -20,10 +20,10 @@ class Login extends CI_Controller {
 						$userId	=	$findUser->userId;
 						$role	=	$findUser->role;
 
-						$this->session->set_userdata('user_login', '1');
+						$this->session->set_userdata('user_login', 1);
 						$this->session->set_userdata('userId',$userId);
 						$this->session->set_userdata('account_type',$role);
-						redirect(base_url() .'User/dashboard', 'refresh');
+						redirect(base_url() .'User', 'refresh');
 					} else {
 						$page_data['page_title']  = 'Login';
 						$this->session->set_flashdata('message','Invalid Username or Password');
