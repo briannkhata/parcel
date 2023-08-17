@@ -32,6 +32,25 @@ class M_user extends CI_Model {
 			}
 		}
 
+		function get_user_by_id($userid){
+		    $this->db->where('userid',$userid);
+			$query = $this->db->get('tblusers');
+			return $query->result_array();
+		}
+
+		function get_name($userid){
+   		    $this->db->where('userid',$userid);
+			$query = $this->db->get('tblusers')->result_array();
+			if(count($query) > 0){
+				foreach ($query as $row) {
+					return $row['name'];
+				}
+			}else {
+				return '';
+			}
+			
+		}
+
 		function add_user($data)
 		{
 			$this->db->insert('tblusers', $data);
