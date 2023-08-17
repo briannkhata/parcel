@@ -39,6 +39,7 @@ class User extends CI_Controller {
 				'city' => $this->input->post('city'),
 				'location' => $this->input->post('location'),
 				'phone' => $this->input->post('phone'),
+				'address' => $this->input->post('address'),
 				'password' => md5($this->input->post('password'))
 			);
 			return $data;
@@ -57,6 +58,7 @@ class User extends CI_Controller {
 				$data['city']    = $row['city'];
 				$data['location']    = $row['location'];
 				$data['phone']    = $row['phone'];
+				$data['address']    = $row['address'];
 			}
 			return $data;
 		}
@@ -67,12 +69,12 @@ class User extends CI_Controller {
 			$data = $this->get_data_from_post();
 			$update_id = $this->input->post('update_id', TRUE);
 			if (isset($update_id)){
-				$this->db->update_user('tblusers', $update_id, $data);
+				$this->M_user->update_user($update_id, $data);
 			 }else{
 				$inserted_id = $this->M_user->add_user($data);
 			}
 
-			$this->session->set_flashdata('message','Data saved successfully');
+			$this->session->set_flashdata('message','User saved successfully');
 			if($update_id !=''):
 				redirect('User/users');
 			else:
@@ -103,9 +105,11 @@ class User extends CI_Controller {
 		function delete($param=''){
 			$this->check_session();
 			$data['deleted'] =  0;
-			$this->db->update_user('tblusers', $param, $data);
+			$data['deletedby'] =  $this->session->userdata('user_id');
+			$data['datedeleted'] =  date('Y-m-d');
+			$this->db->update_user($param, $data);
 			$this->session->set_flashdata('message','User disabled successfully');
-			redirect('User/get_users');
+			redirect('User/users');
 		}
 			  
 }
