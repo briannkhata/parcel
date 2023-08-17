@@ -97,10 +97,9 @@
         Layout.init(); // init current layout
         Login.init();
         Demo.init();
-
-        $(".close").setTimeout(function() {
-            alertElement.fadeOut();
-        }, 5000);
+        setTimeout(function() {
+        $(".alert").hide('blind', {}, 500)
+    }, 3000);
     });
     </script>
 </body>

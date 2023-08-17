@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 			{
 				$username	=	$this->input->post('username');
 				$password	=	$this->input->post('password');			  
-				$findUser      =   $this->M_user->authenticate($username,$password);        
+				$findUser  =   $this->M_user->authenticate($username,$password);        
 				if ($findUser) {
 						$username   =	$findUser->username;
 						$name		=	$findUser->name;
@@ -21,9 +21,11 @@ class Login extends CI_Controller {
 						$role	=	$findUser->role;
 
 						$this->session->set_userdata('user_login', 1);
-						$this->session->set_userdata('userId',$userid);
+						$this->session->set_userdata('userid',$userid);
+						$this->session->set_userdata('name',$name);
+						$this->session->set_userdata('username',$username);
 						$this->session->set_userdata('role',$role);
-						redirect(base_url() .'User', 'refresh');
+						redirect(base_url() .'User');
 					} else {
 						$page_data['page_title']  = 'Login';
 						$this->session->set_flashdata('message','Invalid Username or Password');

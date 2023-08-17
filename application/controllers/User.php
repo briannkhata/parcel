@@ -19,7 +19,7 @@ class User extends CI_Controller {
 			$this->load->view($this->session->userdata('role').'/index',$page_data);		
 		}
 
-		function get_users()
+		function users()
 		{
 			$this->check_session();
 			$page_data['page_title']  = 'System Users';
@@ -74,7 +74,7 @@ class User extends CI_Controller {
 
 			$this->session->set_flashdata('message','Data saved successfully');
 			if($update_id !=''):
-				redirect('User/get_users');
+				redirect('User/users');
 			else:
 				redirect('User/read');
 			endif;
