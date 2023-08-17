@@ -105,8 +105,8 @@ class User extends CI_Controller {
 		function delete($param=''){
 			$this->check_session();
 			$data['deleted'] =  0;
-			$data['deletedby'] =  $this->session->userdata('user_id');
-			$data['datedeleted'] =  date('Y-m-d');
+			$data['deleted_by'] =  $this->session->userdata('user_id');
+			$data['date_deleted'] =  date('Y-m-d');
 			$this->db->update_user($param, $data);
 			$this->session->set_flashdata('message','User disabled successfully');
 			redirect('User/users');

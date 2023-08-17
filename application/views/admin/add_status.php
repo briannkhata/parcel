@@ -1,7 +1,7 @@
 <?php include'/../header.php';?>
 
 <div class="portlet-body">
-    <form role="form" action="<?=base_url();?>User/save" method="post">
+    <form role="form" action="<?=base_url();?>Status/save" method="post">
 
 
         <div class="col-md-8">
