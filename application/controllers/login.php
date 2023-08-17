@@ -17,11 +17,11 @@ class Login extends CI_Controller {
 				if ($findUser) {
 						$username   =	$findUser->username;
 						$name		=	$findUser->name;
-						$userid	=	$findUser->userid;
+						$user_id	=	$findUser->user_id;
 						$role	=	$findUser->role;
 
 						$this->session->set_userdata('user_login', 1);
-						$this->session->set_userdata('userid',$userid);
+						$this->session->set_userdata('user_id',$user_id);
 						$this->session->set_userdata('name',$name);
 						$this->session->set_userdata('username',$username);
 						$this->session->set_userdata('role',$role);

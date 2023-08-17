@@ -10,7 +10,8 @@ class M_user extends CI_Model {
 		function get_users() {
 			$this->db->select('*')
 			->from('tblusers')
-			->where('userid !=', $this->session->userdata('userid'));
+			->where('deleted',0)
+			->where('user_id !=', $this->session->userdata('user_id'));
       		$query = $this->db->get();
 			if ($query->num_rows() > 0) {
 				return $query->result_array(); 
@@ -65,19 +66,8 @@ class M_user extends CI_Model {
 
 		function delete_user($where, $data)
 		{
-			$this->db->update('tbl',$data, $where);
+			$this->db->update('tblusers',$data, $where);
 			return $this->db->affected_rows();
-		}
-
-		function generateRandomString($length = 5)
-		{
-			$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-			$charactersLength = strlen($characters);
-			$randomString = '';
-			for ($i = 0; $i < $length; $i++) {
-				$randomString .= $characters[rand(0, $charactersLength - 1)];
-			}
-			return $randomString;
 		}
  
 }

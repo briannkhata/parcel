@@ -8,7 +8,7 @@ class Status extends CI_Controller {
 		}
 
 		function check_session(){
-			if ($this->session->statusdata('status_login') != 1)//not logged in
+			if ($this->session->userdata('user_login') != 1)//not logged in
 	        redirect(base_url(), 'refresh');
 		}
 
@@ -16,15 +16,15 @@ class Status extends CI_Controller {
 		{
 			$this->check_session();
 			$page_data['page_title']  = 'Status List';
-			$this->load->view($this->session->statusdata('role').'/statuses',$page_data);		
+			$page_data['statuses']  = $this->M_status->get_statuses();
+			$this->load->view($this->session->userdata('role').'/statuses',$page_data);		
 		}
-
-	
 
 		function get_data_from_post()
 		{
 			$data = array(
 				'status_name' => $this->input->post('status_name'), 
+				'sms' => $this->input->post('sms'), 
 			);
 			return $data;
 		}
@@ -34,6 +34,7 @@ class Status extends CI_Controller {
 			$query = $this->M_status->get_status_by_id($update_id);
 			foreach ($query as $row) {
 				$data['status_name']    = $row['status_name'];
+				$data['sms']    = $row['sms'];
 			}
 			return $data;
 		}
@@ -57,7 +58,7 @@ class Status extends CI_Controller {
 			endif;
 		}
 	
-	
+
 		function read()
 		{
 			$this->check_session();
@@ -74,7 +75,7 @@ class Status extends CI_Controller {
 			}
 	
 			$data['page_title']  = 'Add status';
-			$this->load->view($this->session->statusdata('role').'/add_status',$data);			
+			$this->load->view($this->session->userdata('role').'/add_status',$data);			
 		}
 
 		function delete($param=''){
@@ -82,7 +83,7 @@ class Status extends CI_Controller {
 			$data['deleted'] =  0;
 			$this->db->update_status($param, $data);
 			$this->session->set_flashdata('message','status disabled successfully');
-			redirect('status/get_statuss');
+			redirect('Status');
 		}
 			  
 }
