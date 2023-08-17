@@ -14,7 +14,11 @@
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
-					
+					<li>
+							<a href="<?=base_url();?>User/read">
+							<i class="fa fa-circle"></i>
+							Add User</a>
+						</li>
 						<li>
 							<a href="<?=base_url();?>User/users">
 							<i class="fa fa-circle"></i>
@@ -25,21 +29,21 @@
 				</li>
 				<li>
 					<a href="javascript:;">
-					<i class="fa fa-money"></i>
+					<i class="fa fa-list"></i>
 					<span class="title">Parcel Management</span>
 					<span class="arrow "></span>
 					</a>
 					<ul class="sub-menu">
 					
 						<li>
-							<a href="<?=base_url();?>User/parcels">
+							<a href="<?=base_url();?>Parcel/read">
 							<i class="fa fa-circle"></i>
-							Parcels</a>
+							Add Parcel</a>
 						</li>			
 						<li>
-							<a href="<?=base_url();?>User/parcels">
+							<a href="<?=base_url();?>Parcel/parcels">
 							<i class="fa fa-circle"></i>
-							Parcel Events</a>
+							Parcel List</a>
 						</li>					
 					</ul>
 				</li>
