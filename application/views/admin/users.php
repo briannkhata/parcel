@@ -21,7 +21,7 @@
             <?php
 				$count = 1;  
 				foreach($users as $row):?>
-            <tr class="odd gradeX">
+            <tr>
                 <td><?=$count++;?></td>
                 <td><?=$row['name'];?> - <?=$row['gender']?></td>
                 <td><?=$row['username'];?></td>
@@ -29,16 +29,14 @@
                 <td><?=$row['district'];?></td>
                 <td><?=$row['city'];?></td>
                 <td><?=$row['location'];?></td>
-                <td><?=$row['role'];?></td>
+                <td><?=ucfirst($row['role']);?></td>
                 <td>
                     <a href="<?=base_url();?>User/read/<?=$row['userid'];?>"
-                        class="btn btn-info btn-sm black"><i class="fa fa-edit"></i> Edit</a>
-                    <a href="<?=base_url();?>User/delete/<?=$row['userid'];?>" class="btn btn-warning btn-sm black"><i class="fa fa-trash-o"></i> Delete</a>
+                        class="btn btn-primary btn-sm black"><i class="fa fa-edit"></i> Edit</a>
+                    <a href="<?=base_url();?>User/delete/<?=$row['userid'];?>" class="btn btn-danger btn-sm black"><i class="fa fa-times-circle"></i> Delete</a>
                 </td>
-
             </tr>
             <?php endforeach;?>
-
         </tbody>
     </table>
 

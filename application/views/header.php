@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-
 <head>
     <meta charset="utf-8" />
     <title><?=$this->db->get('tblsettings')->row()->system;?> | <?=$page_title;?></title>
@@ -45,8 +44,7 @@
     <link id="style_color" href="<?=base_url();?>assets/admin/layout4/css/themes/light.css" rel="stylesheet"
         type="text/css" />
     <link href="<?=base_url();?>assets/admin/layout4/css/custom.css" rel="stylesheet" type="text/css" />
-    <link href="<?=base_url();?>assets/global/plugins/bootstrap-modal/css/bootstrap-modal-bs3patch.css" rel="stylesheet"
-        type="text/css" />
+	
 
     <link rel="stylesheet" href="<?=base_url();?>assets/print.css" type="text/css" media="print" />
     <link href="<?=base_url();?>assets/fonts.css" rel="stylesheet" type="text/css" />
