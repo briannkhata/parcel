@@ -10,7 +10,7 @@
 	            <li>
 	                <a href="javascript:;">
 	                    <i class="fa fa-users"></i>
-	                    <span class="title">Staff Management</span>
+	                    <span class="title">Users</span>
 	                    <span class="arrow "></span>
 	                </a>
 	                <ul class="sub-menu">
@@ -22,7 +22,7 @@
 	                    <li>
 	                        <a href="<?=base_url();?>User/users">
 	                            <i class="fa fa-circle"></i>
-	                            Staff List</a>
+	                            Users</a>
 	                    </li>
 
 	                </ul>

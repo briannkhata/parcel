@@ -22,7 +22,7 @@ class User extends CI_Controller {
 		function users()
 		{
 			$this->check_session();
-			$page_data['page_title']  = 'System Users';
+			$page_data['page_title']  = 'All Users';
 			$page_data['users']  = $this->M_user->get_users();
 			$this->load->view($this->session->userdata('role').'/users',$page_data);		
 		}
@@ -40,6 +40,7 @@ class User extends CI_Controller {
 				'location' => $this->input->post('location'),
 				'phone' => $this->input->post('phone'),
 				'address' => $this->input->post('address'),
+				'city' => $this->input->post('city'),
 				'password' => md5($this->input->post('password'))
 			);
 			return $data;

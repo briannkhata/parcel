@@ -11,7 +11,37 @@ class M_user extends CI_Model {
 			$this->db->select('*')
 			->from('tblusers')
 			->where('deleted',0)
+			->order_by('date_added','DESC')
 			->where('user_id !=', $this->session->userdata('user_id'));
+      		$query = $this->db->get();
+			if ($query->num_rows() > 0) {
+				return $query->result_array(); 
+			} else {
+				return null;
+			}
+		}
+
+				
+		function get_senders() {
+			$this->db->select('*')
+			->from('tblusers')
+			->where('deleted',0)
+			->where('role','sender')
+			->order_by('date_added','DESC');
+      		$query = $this->db->get();
+			if ($query->num_rows() > 0) {
+				return $query->result_array(); 
+			} else {
+				return null;
+			}
+		}
+
+		function get_receivers() {
+			$this->db->select('*')
+			->from('tblusers')
+			->where('deleted',0)
+			->where('role','receiver')
+			->order_by('date_added','DESC');
       		$query = $this->db->get();
 			if ($query->num_rows() > 0) {
 				return $query->result_array(); 

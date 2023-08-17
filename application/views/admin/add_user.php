@@ -25,7 +25,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Username</label>
                 <input type="text" class="form-control" name="username"
-                    value="<?php if (!empty($username)){echo $username;}?>" required>
+                    value="<?php if (!empty($username)){echo $username;}?>">
             </div>
         </div>
 
@@ -46,8 +46,7 @@
         <div class="col-md-4">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" name="email" value="<?php if (!empty($email)){echo $email;}?>"
-                    required>
+                <input type="email" class="form-control" name="email" value="<?php if (!empty($email)){echo $email;}?>">
             </div>
         </div>
         <div class="col-md-4">
@@ -55,9 +54,33 @@
                 <label for="exampleInputEmail1">Role</label>
                 <select name="role" class="form-control" required="">
                     <option selected disabled>Role</option>
-                    <option <?php if($role == 'admin') echo 'selected';?> value="admin">Admin</option>
-                    <option <?php if($role == 'user') echo 'selected';?> value="user">Norma User</option>
+                    <option <?php if($role == 'sender') echo 'selected';?> value="sender">Sender</option>
+                    <option <?php if($role == 'receiver') echo 'selected';?> value="receiver">Receiver</option>
+                    <option <?php if($role == 'user') echo 'selected';?> value="user">Normal User</option>
+                    <option <?php if($role == 'admin') echo 'selected';?> value="admin">Administrator</option>
                 </select>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="exampleInputEmail1">District</label>
+                <input type="text" class="form-control" name="district" value="<?php if (!empty($district)){echo $district;}?>"
+                    required>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="exampleInputEmail1">City</label>
+                <input type="text" class="form-control" name="city" value="<?php if (!empty($city)){echo $city;}?>">
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="exampleInputEmail1">Exact Location</label>
+                <input type="text" class="form-control" name="location" value="<?php if (!empty($location)){echo $location;}?>">
             </div>
         </div>
         <div class="col-md-12">

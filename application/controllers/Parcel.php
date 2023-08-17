@@ -23,35 +23,28 @@ class Parcel extends CI_Controller {
 		function get_data_from_post()
 		{
 			$data = array(
-				'name' => $this->input->post('name'), 
-				'email' => $this->input->post('email'),
-				'username' => $this->input->post('username'),
-				'role' => $this->input->post('role'),
-				'gender' => $this->input->post('gender'),
-				'district' => $this->input->post('district'),
-				'city' => $this->input->post('city'),
-				'location' => $this->input->post('location'),
-				'phone' => $this->input->post('phone'),
-				'address' => $this->input->post('address'),
-				'password' => md5($this->input->post('password'))
+				'sender_id' => $this->input->post('sender_id'), 
+				'receiver_id' => $this->input->post('receiver_id'),
+				'weight' => $this->input->post('weight'),
+				'charge' => $this->input->post('charge'),
+				'edd' => $this->input->post('edd'),
+				'parcel_desc' => $this->input->post('parcel_desc'),
+				'status_id' => $this->input->post('status_id'),
 			);
 			return $data;
 		}
 	
 		function get_data_from_db($update_id)
 		{
-			$query = $this->M_user->get_user_by_id($update_id);
+			$query = $this->M_parcel->get_parcel_by_id($update_id);
 			foreach ($query as $row) {
-				$data['name']    = $row['name'];
-				$data['email']    = $row['email'];
-				$data['username']    = $row['username'];
-				$data['role']    = $row['role'];
-				$data['gender']    = $row['gender'];
-				$data['district']    = $row['district'];
-				$data['city']    = $row['city'];
-				$data['location']    = $row['location'];
-				$data['phone']    = $row['phone'];
-				$data['address']    = $row['address'];
+				$data['receiver_id']    = $row['receiver_id'];
+				$data['sender_id']    = $row['sender_id'];
+				$data['weight']    = $row['weight'];
+				$data['charge']    = $row['charge'];
+				$data['edd']    = $row['edd'];
+				$data['parcel_desc']    = $row['parcel_desc'];
+				$data['status_id']    = $row['status_id'];
 			}
 			return $data;
 		}
@@ -62,16 +55,16 @@ class Parcel extends CI_Controller {
 			$data = $this->get_data_from_post();
 			$update_id = $this->input->post('update_id', TRUE);
 			if (isset($update_id)){
-				$this->M_user->update_user($update_id, $data);
+				$this->M_parcel->update_parcel($update_id, $data);
 			 }else{
-				$inserted_id = $this->M_user->add_user($data);
+				$inserted_id = $this->M_parcel->add_parcel($data);
 			}
 
-			$this->session->set_flashdata('message','User saved successfully');
+			$this->session->set_flashdata('message','Parcel saved successfully');
 			if($update_id !=''):
-				redirect('User/users');
+				redirect('parcel/');
 			else:
-				redirect('User/read');
+				redirect('parcel/read');
 			endif;
 		}
 	
@@ -92,17 +85,17 @@ class Parcel extends CI_Controller {
 			}
 	
 			$data['page_title']  = 'Add Parcel';
-			$this->load->view($this->session->userdata('role').'/add_user',$data);			
+			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
 		}
 
 		function delete($param=''){
 			$this->check_session();
 			$data['deleted'] =  0;
-			$data['deleted_by'] =  $this->session->userdata('user_id');
-			$data['date_deleted'] =  date('Y-m-d');
-			$this->db->update_user($param, $data);
-			$this->session->set_flashdata('message','Parcel disabled successfully');
-			redirect('User/users');
+			// $data['deleted_by'] =  $this->session->userdata('parcel_id');
+			// $data['date_deleted'] =  date('Y-m-d');
+			$this->db->update_parcel($param, $data);
+			$this->session->set_flashdata('message','Parcel removed successfully');
+			redirect('Parcel');
 		}
 			  
 }
