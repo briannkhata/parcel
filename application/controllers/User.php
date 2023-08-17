@@ -23,7 +23,7 @@ class User extends CI_Controller {
 		{
 			if ($this->session->userdata('user_login') != 1)
 			redirect(base_url());
-			$page_data['page_title']  = 'Users';
+			$page_data['page_title']  = 'System Users';
 			$page_data['users']  = $this->M_user->get_users();
 			$this->load->view($this->session->userdata('role').'/users',$page_data);		
 		}
@@ -71,13 +71,13 @@ class User extends CI_Controller {
 			 }else{
 				$inserted_id = $this->M_user->add_user($data);
 			}
-	
+
 			$this->session->set_flashdata('message','Data saved successfully');
-				if($update_id !=''):
-					redirect('User/get_users');
-				else:
-					redirect('User/read');
-				endif;
+			if($update_id !=''):
+				redirect('User/get_users');
+			else:
+				redirect('User/read');
+			endif;
 		}
 	
 	
@@ -98,5 +98,12 @@ class User extends CI_Controller {
 			$data['page_title']  = 'Add User';
 			$this->load->view($this->session->userdata('role').'/add_user',$data);			
 		}
-	
+
+		function delete($param=''){
+			$data['deleted'] =  0;
+			$this->db->update_user('tblusers', $param, $data);
+			$this->session->set_flashdata('message','User disabled successfully');
+			redirect('User/get_users');
+		}
+			  
 }
