@@ -46,7 +46,7 @@
 	                            Status List</a>
 	                    </li>
 	                    <li>
-	                        <a href="<?=base_url();?>Parcel/read">
+	                        <a href="<?=base_url();?>Parcel/add_parcel">
 	                            <i class="fa fa-circle"></i>
 	                            Add Parcel</a>
 	                    </li>

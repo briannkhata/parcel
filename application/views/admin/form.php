@@ -30,16 +30,6 @@
         <input type="email" class="form-control" name="email">
     </div>
 </div>
-<div class="col-md-4">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Role</label>
-        <select name="role" class="form-control" required="">
-            <option selected disabled>role</option>
-            <option value="sender">Sender</option>
-            <option value="receiver">Receiver</option>
-        </select>
-    </div>
-</div>
 
 <div class="col-md-4">
     <div class="form-group">

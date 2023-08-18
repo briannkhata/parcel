@@ -58,30 +58,33 @@ class Parcel extends CI_Controller {
 		{
 			$this->check_session();
 			$data1 = $this->get_data_from_post1();
-			$this->M_user->add_user($data1);
-			redirect('Parcel/add_parcel');
+			$sender_id = $this->M_user->add_user($data1);
+			$this->session->set_userdata('sender_id',$sender_id);
+			redirect('Parcel/add_parcel2');
 		}
 
 		function save2()
 		{
 			$this->check_session();
-			$data2 = $this->get_data_from_post1();
-			$this->M_user->add_user($data2);
-			redirect('Parcel/add_parcel2');
+			$data = $this->get_data_from_post1();
+			$receiver_id = $this->M_user->add_user($data);
+			$this->session->set_userdata('receiver_id',$receiver_id);
+			redirect('Parcel/add_parcel3');
 		}
 
 		function save3()
 		{
 			$this->check_session();
-			$data3 = $this->get_data_from_post2();
-			$this->M_parcel->add_parcel($data3);
-			redirect('Parcel/add_parcel3');
+			$data = $this->get_data_from_post2();
+			$this->M_parcel->add_parcel($data);
+			$this->session->set_flashdata('message','Parcel added successfully');
+			redirect('Parcel');
 		}
 	
 		function add_parcel()
 		{
 			$this->check_session();
-			$data['page_title']  = 'Add Receiver';
+			$data['page_title']  = 'Add Sender';
 			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
 		}
 
