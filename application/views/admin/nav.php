@@ -70,15 +70,15 @@
 	                            <i class="fa fa-circle"></i>
 	                            Settings</a>
 	                    </li>
+						<li>
+							<a href="<?=base_url();;?>Charge/read">
+								<i class="fa fa-circle"></i>
+								Add Charge</a>
+						</li>
 	                    <li>
-	                        <a href="<?=base_url();?>admin/depots">
+	                        <a href="<?=base_url();?>Charge/">
 	                            <i class="fa fa-circle"></i>
-	                            Depots</a>
-	                    </li>
-	                    <li>
-	                        <a href="<?=base_url();;?>admin/departments">
-	                            <i class="fa fa-circle"></i>
-	                            Departments</a>
+	                            Charges</a>
 	                    </li>
 
 	                    <li>

@@ -20,7 +20,26 @@ class Parcel extends CI_Controller {
 			$this->load->view($this->session->userdata('role').'/index',$page_data);		
 		}
 
-		function get_data_from_post()
+		function get_data_from_post1()
+		{
+			$data = array(
+				'name' => $this->input->post('name'),
+				'email' => $this->input->post('email'),
+				'username' => $this->input->post('phone'),
+				'role' => $this->input->post('role'),
+				'gender' => $this->input->post('gender'),
+				'district' => $this->input->post('district'),
+				'city' => $this->input->post('city'),
+				'location' => $this->input->post('location'),
+				'phone' => $this->input->post('phone'),
+				'address' => $this->input->post('address'),
+				'city' => $this->input->post('city'),
+				'password' => md5($this->input->post('phone'))
+			);
+			return $data;
+		}
+
+		function get_data_from_post2()
 		{
 			$data = array(
 				'sender_id' => $this->input->post('sender_id'), 
@@ -34,57 +53,49 @@ class Parcel extends CI_Controller {
 			return $data;
 		}
 	
-		function get_data_from_db($update_id)
-		{
-			$query = $this->M_parcel->get_parcel_by_id($update_id);
-			foreach ($query as $row) {
-				$data['receiver_id']    = $row['receiver_id'];
-				$data['sender_id']    = $row['sender_id'];
-				$data['weight']    = $row['weight'];
-				$data['charge']    = $row['charge'];
-				$data['edd']    = $row['edd'];
-				$data['parcel_desc']    = $row['parcel_desc'];
-				$data['status_id']    = $row['status_id'];
-			}
-			return $data;
-		}
-	
-		function save()
-		{
-			$this->check_session();
-			$data = $this->get_data_from_post();
-			$update_id = $this->input->post('update_id', TRUE);
-			if (isset($update_id)){
-				$this->M_parcel->update_parcel($update_id, $data);
-			 }else{
-				$inserted_id = $this->M_parcel->add_parcel($data);
-			}
 
-			$this->session->set_flashdata('message','Parcel saved successfully');
-			if($update_id !=''):
-				redirect('parcel/');
-			else:
-				redirect('parcel/read');
-			endif;
-		}
-	
-	
-		function read()
+		function save1()
 		{
 			$this->check_session();
-			$update_id = $this->uri->segment(3);
-			if(!isset($update_id)){
-				$update_id = $this->input->post('update_id',$update_id);
-			}
-			if(is_numeric($update_id)){
-				$data = $this->get_data_from_db($update_id);
-				$data['update_id'] = $update_id;
-			}
-			else{
-				$data = $this->get_data_from_post();
-			}
+			$data1 = $this->get_data_from_post1();
+			$this->M_user->add_user($data1);
+			redirect('Parcel/add_parcel');
+		}
+
+		function save2()
+		{
+			$this->check_session();
+			$data2 = $this->get_data_from_post1();
+			$this->M_user->add_user($data2);
+			redirect('Parcel/add_parcel2');
+		}
+
+		function save3()
+		{
+			$this->check_session();
+			$data3 = $this->get_data_from_post2();
+			$this->M_parcel->add_parcel($data3);
+			redirect('Parcel/add_parcel3');
+		}
 	
-			$data['page_title']  = 'Add Parcel';
+		function add_parcel()
+		{
+			$this->check_session();
+			$data['page_title']  = 'Add Receiver';
+			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
+		}
+
+		function add_parcel2()
+		{
+			$this->check_session();
+			$data['page_title']  = 'Add Receiver';
+			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
+		}
+
+		function add_parcel3()
+		{
+			$this->check_session();
+			$data['page_title']  = 'Add Payment';
 			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
 		}
 
