@@ -21,6 +21,29 @@ class User extends CI_Controller
 		$this->load->view($this->session->userdata('role') . '/index', $page_data);
 	}
 
+	function settings()
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Settings';
+		$page_data['settings'] = $this->M_user->get_settings();
+		;
+		$this->load->view($this->session->userdata('role') . '/settings', $page_data);
+	}
+
+	function save_settings()
+	{
+		$data = array(
+			'company' => $this->input->post('company'),
+			'phone' => $this->input->post('phone'),
+			'alt_phone' => $this->input->post('alt_phone'),
+			'email' => $this->input->post('email'),
+			'address' => $this->input->post('address'),
+		);
+		$this->M_user->update_settings($this->input->post('id'), $data);
+		$this->session->set_flashdata('message', 'Settings saved successfully');
+		redirect('User/settings');
+	}
+
 	function users()
 	{
 		$this->check_session();
@@ -74,7 +97,7 @@ class User extends CI_Controller
 		if (isset($update_id)) {
 			$this->M_user->update_user($update_id, $data);
 		} else {
-			$inserted_id = $this->M_user->add_user($data);
+			$this->M_user->add_user($data);
 		}
 
 		$this->session->set_flashdata('message', 'User saved successfully');

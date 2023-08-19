@@ -29,7 +29,7 @@ class M_user extends CI_Model
 	{
 		$this->db->select('*')
 			->from('tbldistricts');
-    		$query = $this->db->get();
+		$query = $this->db->get();
 		if ($query->num_rows() > 0) {
 			return $query->result_array();
 		} else {
@@ -118,6 +118,20 @@ class M_user extends CI_Model
 	function delete_user($where, $data)
 	{
 		$this->db->update('tblusers', $data, $where);
+		return $this->db->affected_rows();
+	}
+
+	function get_settings()
+	{
+		$this->db->select('*')
+			->from('tblsettings');
+		$query = $this->db->get();
+		return $query->result_array();
+	}
+
+	function update_settings($where, $data)
+	{
+		$this->db->update('tblsettings', $data, $where);
 		return $this->db->affected_rows();
 	}
 

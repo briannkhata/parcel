@@ -35,16 +35,7 @@
 	                </a>
 	                <ul class="sub-menu">
 
-	                    <li>
-	                        <a href="<?=base_url();?>Status/read">
-	                            <i class="fa fa-circle"></i>
-	                            Add Status</a>
-	                    </li>
-	                    <li>
-	                        <a href="<?=base_url();?>Status">
-	                            <i class="fa fa-circle"></i>
-	                            Status List</a>
-	                    </li>
+	                
 	                    <li>
 	                        <a href="<?=base_url();?>Parcel/add_parcel">
 	                            <i class="fa fa-circle"></i>
@@ -81,20 +72,30 @@
 	                            Charges</a>
 	                    </li>
 
-	                    <li>
-	                        <a href="<?=base_url();;?>admin/banks">
+						<li>
+	                        <a href="<?=base_url();?>Status/read">
 	                            <i class="fa fa-circle"></i>
-	                            Banks</a>
+	                            Add Status</a>
+	                    </li>
+	                    <li>
+	                        <a href="<?=base_url();?>Status">
+	                            <i class="fa fa-circle"></i>
+	                            Status List</a>
+	                    </li>
+
+						<li>
+	                        <a href="<?=base_url();?>Package_type/read">
+	                            <i class="fa fa-circle"></i>
+	                            Add package type</a>
 	                    </li>
 
 	                    <li>
-	                        <a href="<?=base_url();;?>admin/email">
+	                        <a href="<?=base_url();;?>Package_type">
 	                            <i class="fa fa-circle"></i>
-	                            Email Payslips</a>
+	                            Package Types</a>
 	                    </li>
 
 	                </ul>
-	            </li>
 	            </li>
 	        </ul>
 	        <!-- END SIDEBAR MENU -->

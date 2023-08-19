@@ -5,6 +5,7 @@
 
         <?php include 'form.php'; ?>
         <input type="hidden" class="form-control" name="role" value="receiver">
+        <input type="text" class="form-control" value="<?=$this->M_user->get_name($this->session->userdata('sender_id'));?>">
 
         <div class="modal-footer" style="border: none;">
             <button type="submit" class="btn blue"> Next</button>

@@ -44,14 +44,14 @@
     </div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-6">
     <div class="form-group">
         <label for="exampleInputEmail1">City</label>
         <input type="text" class="form-control" name="city">
     </div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-6">
     <div class="form-group">
         <label for="exampleInputEmail1">Exact Location</label>
         <input type="text" class="form-control" name="location">

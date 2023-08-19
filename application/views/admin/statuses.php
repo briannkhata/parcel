@@ -19,9 +19,9 @@
                 <td><?=$row['status_name'];?></td>
                 <td><?=$row['sms'] == 1 ? "Yes":"No";?></td>
                 <td>
-                    <a href="<?=base_url();?>User/read/<?=$row['status_id'];?>" class="btn btn-primary btn-sm black"><i
+                    <a href="<?=base_url();?>Status/read/<?=$row['status_id'];?>" class="btn btn-primary btn-sm black"><i
                             class="fa fa-edit"></i></a>
-                    <a href="<?=base_url();?>User/delete/<?=$row['status_id'];?>" class="btn btn-danger btn-sm black"><i
+                    <a href="<?=base_url();?>Status/delete/<?=$row['status_id'];?>" class="btn btn-danger btn-sm black"><i
                             class="fa fa-times-circle"></i></a>
                 </td>
             </tr>

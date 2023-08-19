@@ -99,7 +99,7 @@ class Parcel extends CI_Controller {
 		{
 			$this->check_session();
 			$data['page_title']  = 'Add Payment';
-			$this->load->view($this->session->userdata('role').'/add_parcel',$data);			
+			$this->load->view($this->session->userdata('role').'/add_parcel3',$data);			
 		}
 
 		function delete($param=''){
