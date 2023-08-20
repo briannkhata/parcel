@@ -81,5 +81,10 @@
         <input type="text" class="form-control" name="charge" value="<?= !empty($charge) ? $charge : ""; ?>" required>
     </div>
 </div>
-
-<input type="hidden" name="tracking_code" value=" <?= !empty($tracking_code) ? $tracking_code : $this->M_parcel->generateRandomString(); ?>">
+<div class="col-md-12">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Tracking Code</label>
+        <input type="text" name="tracking_code" class="form-control"
+            value=" <?= !empty($tracking_code) ? $tracking_code : $this->M_parcel->generateRandomString(); ?>" readonly>
+    </div>
+</div>

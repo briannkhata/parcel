@@ -1,7 +1,7 @@
 <?php include '/../header.php'; ?>
 
 <div class="portlet-body">
-    <form role="form" action="<?= base_url(); ?>Parcel/save1" method="post">
+    <form role="form" action="<?= base_url(); ?>Parcel/save" method="post">
         <strong>Sender Details</strong>
         <hr>
         <?php include 'sender_form.php'; ?>

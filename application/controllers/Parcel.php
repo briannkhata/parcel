@@ -19,7 +19,7 @@ class Parcel extends CI_Controller
 		$this->check_session();
 		$page_data['page_title'] = 'Parcel List';
 		$page_data['parcels'] = $this->M_parcel->get_parcels();
-		$this->load->view($this->session->userdata('role') . '/index', $page_data);
+		$this->load->view($this->session->userdata('role') . '/parcels', $page_data);
 	}
 
 	function get_data_from_post()

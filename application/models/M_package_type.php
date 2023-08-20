@@ -19,6 +19,19 @@ class M_package_type extends CI_Model
 
 	}
 
+	function get_package_type($package_type_id)
+	{
+		$this->db->where('package_type_id', $package_type_id);
+		$query = $this->db->get('tblpackage_types')->result_array();
+		if (count($query) > 0) {
+			foreach ($query as $row) {
+				return $row['package_type'];
+			}
+		} else {
+			return '';
+		}
+	}
+
 	function get_package_type_by_id($package_type_id)
 	{
 		$this->db->where('package_type_id', $package_type_id);

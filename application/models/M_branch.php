@@ -19,6 +19,19 @@ class M_branch extends CI_Model
 
 	}
 
+	function get_name($branch_id)
+	{
+		$this->db->where('branch_id', $branch_id);
+		$query = $this->db->get('tblbranches')->result_array();
+		if (count($query) > 0) {
+			foreach ($query as $row) {
+				return $row['branch'];
+			}
+		} else {
+			return '';
+		}
+	}
+
 	function get_branch_by_id($branch_id)
 	{
 		$this->db->where('branch_id', $branch_id);

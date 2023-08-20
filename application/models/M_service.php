@@ -19,6 +19,19 @@ class M_service extends CI_Model
 
 	}
 
+	function get_service($service_id)
+	{
+		$this->db->where('service_id', $service_id);
+		$query = $this->db->get('tblservices')->result_array();
+		if (count($query) > 0) {
+			foreach ($query as $row) {
+				return $row['service'];
+			}
+		} else {
+			return '';
+		}
+	}
+
 	function get_service_by_id($service_id)
 	{
 		$this->db->where('service_id', $service_id);
