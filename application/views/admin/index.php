@@ -7,11 +7,11 @@
 					<div class="dashboard-stat2">
 						<div class="display">
 							<div class="number">
-								<h3 class="font-green-sharp"><?=count($this->db->get_where('tblusers')->result_array());?></small></h3>
+								<h3 class="font-green-sharp"><?=count($this->db->get_where('tblusers',array('deleted'=>0))->result_array());?></small></h3>
 								<small>TOTAL STAFF</small>
 							</div>
 							<div class="icon">
-								<i class="icon-pie-chart"></i>
+								<i class="icon-user"></i>
 							</div>
 						</div>
 						<div class="progress-info">
@@ -29,12 +29,40 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="dashboard-stat2">
 						<div class="display">
 							<div class="number">
-								<h3 class="font-red-haze"><?=count($this->db->get('tblusers')->result_array());?></h3>
-								<small>HEALTH SCHEME</small>
+								<h3 class="font-green-sharp"><?=count($this->db->get_where('tblbranches',array('deleted'=>0))->result_array());?></small></h3>
+								<small>TOTAL BRANCHES</small>
+							</div>
+							<div class="icon">
+								<i class="icon-pie-chart"></i>
+							</div>
+						</div>
+						<div class="progress-info">
+							<div class="progress">
+							
+							</div>
+							<div class="status">
+								<div class="status-title">
+								 TOTAL NUMBER OF BRANCHES
+								</div>
+								<div class="status-number">
+									 
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+					<div class="dashboard-stat2">
+						<div class="display">
+							<div class="number">
+								<h3 class="font-red-haze"><?=count($this->db->get_where('tblparcels',array('deleted'=>0))->result_array());?></h3>
+								<small>TOTAL PARCELS</small>
 							</div>
 							<div class="icon">
 								<i class="icon-like"></i>
@@ -48,7 +76,7 @@
 							</div>
 							<div class="status">
 								<div class="status-title">
-									STAFFS ON HEALTH SCHEME
+									TOTAL NUMBER OF PARCELS
 								</div>
 								<div class="status-number">
 									
@@ -61,7 +89,7 @@
 					<div class="dashboard-stat2">
 						<div class="display">
 							<div class="number">
-								<h3 class="font-blue-sharp">50</h3>
+								<h3 class="font-blue-sharp"><?=number_format($this->M_parcel->get_parcel_daily_sales(),2);?></h3>
 								<small>TOTAL SALES</small>
 							</div>
 							<div class="icon">
@@ -76,7 +104,7 @@
 							</div>
 							<div class="status">
 								<div class="status-title">
-									 today 's sales
+									 TOTAL SALES
 								</div>
 								<div class="status-number">
 									
@@ -85,15 +113,17 @@
 						</div>
 					</div>
 				</div>
+
+			<?php foreach($statuses as $row){?>	
 				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 					<div class="dashboard-stat2">
 						<div class="display">
 							<div class="number">
-								<h3 class="font-purple-soft">50</h3>
-								<small>STAFF</small>
+								<h3 class="font-purple-soft"><?=count($this->M_parcel->get_parcel_by_status($row['status_id']));?></h3>
+								<small><?=$row['status_name'];?></small>
 							</div>
 							<div class="icon">
-								<i class="icon-user"></i>
+								<i class="fa fa-filter"></i>
 							</div>
 						</div>
 						<div class="progress-info">
@@ -104,7 +134,7 @@
 							</div>
 							<div class="status">
 								<div class="status-title">
-									 total staff
+								<?=$row['status_name'];?>
 								</div>
 								<div class="status-number">
 									
@@ -113,6 +143,7 @@
 						</div>
 					</div>
 				</div>
+				<?php }?>
 			</div>
 			
 			

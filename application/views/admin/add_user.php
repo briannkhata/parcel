@@ -65,7 +65,7 @@
                 <select name="role" class="form-control" required="">
                     <option selected disabled>Role</option>
                     <option <?=$role == 'user'? 'selected':''; ?> value="user">Normal User</option>
-                    <option <?=$role == 'report'? 'selected':''; ?> value="report">Report View</option>
+                    <option <?=$role == 'report'? 'selected':''; ?> value="report">Report Viewer</option>
                     <option <?=$role == 'admin' ? 'selected':''; ?> value="admin">Administrator</option>
                 </select>
             </div>

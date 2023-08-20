@@ -27,7 +27,44 @@ class Parcel extends CI_Controller
 		$this->check_session();
 		$page_data['page_title'] = 'Parcel Details';
 		$page_data['parcel'] = $this->M_parcel->get_parcel_by_id($param);
+		$page_data['payments'] = $this->M_parcel->get_parcel_payments($param);
+		$page_data['events'] = $this->M_parcel->get_parcel_events($param);
+		$page_data['paid'] = $this->M_parcel->get_paid($param);
+		$page_data['parcel_id'] = $param;
 		$this->load->view($this->session->userdata('role') . '/view_parcel', $page_data);
+	}
+
+	function tracker()
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Track Parcel';
+		$this->load->view($this->session->userdata('role') . '/tracker', $page_data);
+	}
+
+	function track()
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Parcel Details | Tracking';
+		$page_data['parcel'] = $this->M_parcel->get_parcel_by_code($this->input->post('tracking_code'));
+		$this->load->view($this->session->userdata('role') . '/track', $page_data);
+	}
+
+	function pay($param='')
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Parcel Details | Pay';
+		$page_data['parcel'] = $this->M_parcel->get_parcel_by_id($param);
+		$page_data['parcel_id'] = $param;
+		$this->load->view($this->session->userdata('role') . '/pay', $page_data);
+	}
+
+	function update_status($param='')
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Parcel Details | Update Status';
+		$page_data['parcel'] = $this->M_parcel->get_parcel_by_id($param);
+		$page_data['parcel_id'] = $param;
+		$this->load->view($this->session->userdata('role') . '/update_status', $page_data);
 	}
 
 
@@ -108,6 +145,45 @@ class Parcel extends CI_Controller
 		endif;
 	}
 
+	function save_payment()
+	{
+		$this->check_session();
+		$data['charge'] = $this->input->post('charge');
+		$data['parcel_id'] = $this->input->post('parcel_id');
+		$data['added_by'] = $this->session->userdata('user_id');
+		$this->M_parcel->save_payment($data);
+		$data2['paid'] = 1;
+		$this->M_parcel->toggle_paid($data['parcel_id'], $data2);
+		$this->session->set_flashdata('message', 'Payment successfull');
+		redirect('Parcel/view/'.$data['parcel_id']);
+	}
+
+	function save_event()
+	{
+		$this->check_session();
+		$data['status_id'] = $this->input->post('status_id');
+		$data['parcel_id'] = $this->input->post('parcel_id');
+		$data['location'] = $this->input->post('location');
+		$data['desc'] = $this->input->post('desc');
+		$data['status_id'] = $this->input->post('status_id');
+		$this->M_parcel->save_event($data);
+		$data2['status_id'] = $data['status_id'];
+		$this->M_parcel->toggle_status($data['parcel_id'], $data2);
+		$this->session->set_flashdata('message', 'Status updated successfully');
+		redirect('Parcel/view/'.$data['parcel_id']);
+	}
+
+
+	function delete_payment($param="",$param1="")
+	{
+		$this->check_session();
+		$data2['paid'] = 0;
+		$this->M_parcel->toggle_paid($param1, $data2);
+
+		$this->M_parcel->delete_payment($param);
+		$this->session->set_flashdata('message', 'Payment deleted successfull');
+		redirect('Parcel/view/'.$param1);
+	}
 
 	function read()
 	{

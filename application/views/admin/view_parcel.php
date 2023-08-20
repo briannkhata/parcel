@@ -1,9 +1,14 @@
 <?php include '/../header.php'; ?>
 <div class="portlet-body">
-<div class="">
-        <a href="<?= base_url(); ?>parcel" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
-        <a href="" class="btn btn-default btn-sm"><i class="fa fa-print"></i> Print</a>
-        <a href="<?= base_url(); ?>parcel/update_status" class="btn btn-primary btn-sm"><i class="fa fa-refresh"></i> Update Status</a>
+    <div class="">
+        <a href="<?= base_url(); ?>Parcel" class="btn btn-default btn-sm"><i class="fa fa-arrow-left"></i> Back</a>
+        <a href="" class="btn btn-default btn-sm" onclick="window.print()"><i class="fa fa-print"></i> Print</a>
+        <a href="<?= base_url(); ?>Parcel/update_status/<?= $parcel_id; ?>" class="btn btn-primary btn-sm"><i
+                class="fa fa-refresh"></i> Update Status</a>
+                <?php if($paid == 0){?>
+        <a href="<?= base_url(); ?>Parcel/pay/<?= $parcel_id; ?>" class="btn btn-primary btn-sm"><i
+                class="fa fa-money"></i> Pay</a>
+                <?php }?>
 
     </div>
     <hr>
@@ -32,7 +37,8 @@
                 </tr>
                 <tr>
                     <th>Sending Office</th>
-                   <th> <?= $this->M_branch->get_branch($row['sbranch_id']); ?>
+                    <th>
+                        <?= $this->M_branch->get_branch($row['sbranch_id']); ?>
                     </th>
                 </tr>
                 <tr>
@@ -93,6 +99,71 @@
             </thead>
 
         <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <br><br>
+    <strong>Payments</strong>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Charge</th>
+                <th>Payment Date</th>
+                <th>Added By</th>
+                <!-- <th></th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($payments as $row): ?>
+                <tr>
+                   
+                    <td>
+                        <?= number_format($row['charge'], 2); ?>
+                    </td>
+                    <td>
+                        <?= $row['payment_date']; ?>
+                    </td>
+                    <td><?= $this->M_user->get_name($row['added_by']); ?></td>
+                    <!-- <td>
+                        <a href="<?= base_url(); ?>Parcel/delete_payment/<?= $row['parcel_id']; ?>"
+                            class="btn btn-danger btn-sm black"><i class="fa fa-times-circle"></i></a>
+                    </td> -->
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <br><br>
+    <strong>Events</strong>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Status</th>
+                <th>Event Date</th>
+                <th>Location</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            foreach ($events as $row): ?>
+                <tr>
+                   
+                    <td><?= $this->M_status->get_status($row['status_id']); ?></td>
+                    <td>
+                        <?= $row['event_date']; ?>
+                    </td>
+                    <td>
+                        <?= $row['location']; ?>
+                    </td>
+                    <td>
+                        <?= $row['desc']; ?>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
         </tbody>
     </table>
 

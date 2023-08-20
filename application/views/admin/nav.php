@@ -43,14 +43,14 @@
 							Parcel List</a>
 					</li>
 					<li>
-						<a href="<?= base_url(); ?>Parcel/track">
+						<a href="<?= base_url(); ?>Parcel/tracker">
 							<i class="fa fa-circle"></i>
 							Track Parcel</a>
 					</li>
 
 				</ul>
 			</li>
-
+			
 			<li>
 				<a href="javascript:;">
 					<i class="fa fa-cogs"></i>
@@ -80,26 +80,38 @@
 
 
 					<li>
-						<a href="<?= base_url();
-						; ?>Package_type">
+						<a href="<?= base_url();?>Package_type">
 							<i class="fa fa-circle"></i>
 							Package Types</a>
 					</li>
 
 					<li>
-						<a href="<?= base_url();
-						; ?>Service">
+						<a href="<?= base_url();?>Service">
 							<i class="fa fa-circle"></i>
 							Services</a>
 					</li>
 
 					<li>
-						<a href="<?= base_url();
-						; ?>Branch">
+						<a href="<?= base_url(); ?>Branch">
 							<i class="fa fa-circle"></i>
 							Branches</a>
 					</li>
 
+				</ul>
+			</li>
+			<li>
+				<a href="javascript:;">
+					<i class="fa fa-cog"></i>
+					<span class="title">Reports</span>
+					<span class="arrow "></span>
+				</a>
+				<ul class="sub-menu">
+					<li>
+						<a href="<?= base_url(); ?>Report/by_status">
+							<i class="fa fa-circle"></i>
+							Parcels by Status</a>
+					</li>
+				
 				</ul>
 			</li>
 		</ul>

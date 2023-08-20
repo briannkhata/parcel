@@ -18,6 +18,7 @@ class User extends CI_Controller
 	{
 		$this->check_session();
 		$page_data['page_title'] = 'Dashboard';
+		$page_data['statuses'] = $this->M_status->get_statuses();
 		$this->load->view($this->session->userdata('role') . '/index', $page_data);
 	}
 

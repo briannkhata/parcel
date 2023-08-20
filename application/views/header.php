@@ -85,12 +85,12 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-default">
                                 <li>
-                                    <a href="<?=base_url();?>User/logout">
+                                    <a href="<?=base_url();?>User/chnage_password">
                                         <i class="icon-user"></i> Change Password</a>
                                 </li>
 
                                 <li>
-                                    <a href="<?=base_url();?>User/logout">
+                                    <a href="<?=base_url();?>Login/logout">
                                         <i class="icon-key"></i> Logout </a>
                                 </li>
                             </ul>

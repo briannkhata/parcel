@@ -42,6 +42,9 @@ jQuery(document).ready(function() {
     Metronic.init(); // init metronic core componets
     Layout.init(); // init layout
     $('.table-bordered').dataTable();
+    setTimeout(function() {
+        $(".alert").hide('blind', {}, 500)
+    }, 3000);
 });
 </script>
 <!-- END JAVASCRIPTS -->
