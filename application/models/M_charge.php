@@ -49,13 +49,15 @@ class M_charge extends CI_Model
 
 	function update_charge($where, $data)
 	{
-		$this->db->update('tblcharges', $data, $where);
+		$this->db->where('charge_id',$where);
+		$this->db->update('tblcharges', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_charge($where, $data)
 	{
-		$this->db->update('tblcharges', $data, $where);
+		$this->db->where('charge_id',$where);
+		$this->db->update('tblcharges', $data);
 		return $this->db->affected_rows();
 	}
 

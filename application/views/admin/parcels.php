@@ -11,13 +11,14 @@
                 <th>Receiver Details</th>
                 <th>Branch From</th>
                 <th>Branch To</th>
-                <th>package_type_id</th>
-                <th>service_id</th>
-                <th>weight</th>
-                <th>charge</th>
-                <th>edd</th>
-                <th>parcel_desc</th>
-                <th>status_id</th>
+                <th>Package Type</th>
+                <th>Service Type</th>
+                <th>Weight</th>
+                <th>Charge</th>
+                <th>Estimated <br>Delivery Date</th>
+                <th>Parcel <br>Description</th>
+                <th>Status</th>
+                <th>Tracking Code</th>
                 <th></th>
             </tr>
         </thead>
@@ -30,16 +31,14 @@
                         <?= $count++; ?>
                     </td>
                     <td>
-                        <?= $row['sname']; ?><hr>
-                        <?= $row['semail']; ?> | <?= $row['sphone']; ?>
-                    <br>
+                        <?= $row['sname']; ?><br>
+                        <?= $row['semail']; ?><br> <?= $row['sphone']; ?>                    <br>
                         <?= $row['saddress']; ?>
                     </td>
                     <td>
-                        <?= $row['rname']; ?><hr>
-                        <?= $row['remail']; ?> | <?= $row['rphone']; ?>
-                   <hr>
-                        <?= $row['raddress']; ?> | <?= $row['rlocation']; ?>
+                        <?= $row['rname']; ?><br>
+                        <?= $row['remail']; ?> <br> <?= $row['rphone']; ?><br>
+                        <?= $row['rlocation']; ?> <br> <?= $row['raddress']; ?>
                     </td>
                     <td>
                         <?=$this->M_branch->get_branch($row['sbranch_id']); ?>
@@ -48,10 +47,10 @@
                     <?=$this->M_branch->get_branch($row['rbranch_id']); ?>
                     </td>
                     <td>
-                        <?= $row['package_type_id']; ?>
+                        <?= $this->M_package_type->get_package_type($row['package_type_id']); ?>
                     </td>
                     <td>
-                        <?= $row['service_id']; ?>
+                        <?= $this->M_service->get_service($row['service_id']); ?>
                     </td>
                     <td>
                         <?= $row['weight']; ?>
@@ -66,7 +65,10 @@
                         <?= $row['parcel_desc']; ?>
                     </td>
                     <td>
-                        <?= $row['status_id']; ?>
+                        <?= $this->M_status->get_status($row['status_id']); ?>
+                    </td>
+                    <td>
+                        <?= $row['tracking_code']; ?>
                     </td>
                     <td>
                         <a href="<?= base_url(); ?>parcel/read/<?= $row['parcel_id']; ?>"

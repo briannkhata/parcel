@@ -19,7 +19,7 @@ class M_branch extends CI_Model
 
 	}
 
-	function get_name($branch_id)
+	function get_branch($branch_id)
 	{
 		$this->db->where('branch_id', $branch_id);
 		$query = $this->db->get('tblbranches')->result_array();
@@ -47,13 +47,15 @@ class M_branch extends CI_Model
 
 	function update_branch($where, $data)
 	{
-		$this->db->update('tblbranches', $data, $where);
+		$this->db->where('branch_id',$where);
+		$this->db->update('tblbranches', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_branch($where, $data)
 	{
-		$this->db->update('tblbranches', $data, $where);
+		$this->db->where('branch_id',$where);
+		$this->db->update('tblbranches', $data);
 		return $this->db->affected_rows();
 	}
 

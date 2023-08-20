@@ -64,10 +64,6 @@
                 <label for="exampleInputEmail1">Role</label>
                 <select name="role" class="form-control" required="">
                     <option selected disabled>Role</option>
-                    <option <?php if ($role == 'sender')
-                        echo 'selected'; ?> value="sender">Sender</option>
-                    <option <?php if ($role == 'receiver')
-                        echo 'selected'; ?> value="receiver">Receiver</option>
                     <option <?php if ($role == 'user')
                         echo 'selected'; ?> value="user">Normal User</option>
                     <option <?php if ($role == 'admin')
@@ -76,38 +72,21 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-12">
             <div class="form-group">
-                <label for="exampleInputEmail1">District</label>
-                <select name="district" class="form-control" required="">
-                    <option selected disabled>District</option>
-                    <?php foreach ($this->M_user->get_districts() as $row) { ?>
-                        <option <?php if ($district == $row['district'])
-                            echo 'selected'; ?> value="<?= $row['district']; ?>">
-                            <?= $row['district']; ?></option>
+                <label for="exampleInputEmail1">Branch</label>
+                <select name="branch_id" class="form-control" required="">
+                    <option selected disabled>branch</option>
+                    <?php foreach ($this->M_branch->get_branches() as $row) { ?>
+                        <option <?php if ($branch_id == $row['branch_id'])
+                            echo 'selected'; ?> value="<?= $row['branch_id']; ?>">
+                            <?= $row['branch']; ?></option>
                     <?php } ?>
                 </select>
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">City</label>
-                <input type="text" class="form-control" name="city" value="<?php if (!empty($city)) {
-                    echo $city;
-                } ?>">
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Exact Location</label>
-                <input type="text" class="form-control" name="location"
-                    value="<?php if (!empty($location)) {
-                        echo $location;
-                    } ?>">
-            </div>
-        </div>
+      
         <div class="col-md-12">
             <div class="form-group">
                 <label for="exampleInputEmail1">Address</label>

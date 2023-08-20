@@ -60,12 +60,9 @@ class User extends CI_Controller
 			'username' => $this->input->post('username'),
 			'role' => $this->input->post('role'),
 			'gender' => $this->input->post('gender'),
-			'district' => $this->input->post('district'),
-			'city' => $this->input->post('city'),
-			'location' => $this->input->post('location'),
+			'branch_id' => $this->input->post('branch_id'),
 			'phone' => $this->input->post('phone'),
 			'address' => $this->input->post('address'),
-			'city' => $this->input->post('city'),
 			'password' => md5($this->input->post('password'))
 		);
 		return $data;
@@ -80,9 +77,7 @@ class User extends CI_Controller
 			$data['username'] = $row['username'];
 			$data['role'] = $row['role'];
 			$data['gender'] = $row['gender'];
-			$data['district'] = $row['district'];
-			$data['city'] = $row['city'];
-			$data['location'] = $row['location'];
+			$data['branch_id'] = $row['branch_id'];
 			$data['phone'] = $row['phone'];
 			$data['address'] = $row['address'];
 		}
@@ -93,7 +88,7 @@ class User extends CI_Controller
 	{
 		$this->check_session();
 		$data = $this->get_data_from_post();
-		$update_id = $this->input->post('update_id', TRUE);
+		$update_id = $this->input->post('update_id');
 		if (isset($update_id)) {
 			$this->M_user->update_user($update_id, $data);
 		} else {

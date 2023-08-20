@@ -47,13 +47,15 @@ class M_package_type extends CI_Model
 
 	function update_package_type($where, $data)
 	{
-		$this->db->update('tblpackage_types', $data, $where);
+		$this->db->where('package_id',$where);
+		$this->db->update('tblpackage_types', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_package_type($where, $data)
 	{
-		$this->db->update('tblpackage_types', $data, $where);
+		$this->db->where('package_id',$where);
+		$this->db->update('tblpackage_types', $data);
 		return $this->db->affected_rows();
 	}
 

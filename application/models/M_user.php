@@ -124,13 +124,15 @@ class M_user extends CI_Model
 
 	function update_user($where, $data)
 	{
-		$this->db->update('tblusers', $data, $where);
+		$this->db->where('user_id',$where);
+		$this->db->update('tblusers', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_user($where, $data)
 	{
-		$this->db->update('tblusers', $data, $where);
+		$this->db->where('user_id',$where);
+		$this->db->update('tblusers', $data);
 		return $this->db->affected_rows();
 	}
 
@@ -144,7 +146,8 @@ class M_user extends CI_Model
 
 	function update_settings($where, $data)
 	{
-		$this->db->update('tblsettings', $data, $where);
+		$this->db->where('id',$where);
+		$this->db->update('tblsettings', $data);
 		return $this->db->affected_rows();
 	}
 

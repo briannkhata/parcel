@@ -22,6 +22,19 @@ class M_status extends CI_Model
 		}
 	}
 
+	function get_status($status_id)
+	{
+		$this->db->where('status_id', $status_id);
+		$query = $this->db->get('tblstatuses')->result_array();
+		if (count($query) > 0) {
+			foreach ($query as $row) {
+				return $row['status_name'];
+			}
+		} else {
+			return '';
+		}
+	}
+
 	function get_status_by_id($statusid)
 	{
 		$this->db->where('status_id', $statusid);
@@ -37,13 +50,15 @@ class M_status extends CI_Model
 
 	function update_status($where, $data)
 	{
-		$this->db->update('tblstatuses', $data, $where);
+		$this->db->where('status_id',$where);
+		$this->db->update('tblstatuses', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_status($where, $data)
 	{
-		$this->db->update('tblstatuses', $data, $where);
+		$this->db->where('status_id',$where);
+		$this->db->update('tblstatuses', $data);
 		return $this->db->affected_rows();
 	}
 

@@ -43,6 +43,8 @@ class Parcel extends CI_Controller
 			'edd' => $this->input->post('edd'),
 			'parcel_desc' => $this->input->post('parcel_desc'),
 			'status_id' => $this->input->post('status_id'),
+			'tracking_code' => $this->input->post('tracking_code'),
+
 		);
 		return $data;
 	}
@@ -70,6 +72,8 @@ class Parcel extends CI_Controller
 				'edd' => $row['edd'],
 				'parcel_desc' => $row['parcel_desc'],
 				'status_id' => $row['status_id'],
+				'tracking_code' => $row['tracking_code'],
+
 			);
 		}
 		return $data;

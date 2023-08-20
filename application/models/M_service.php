@@ -47,13 +47,15 @@ class M_service extends CI_Model
 
 	function update_service($where, $data)
 	{
-		$this->db->update('tblservices', $data, $where);
+		$this->db->where('service_id',$where);
+		$this->db->update('tblservices', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_service($where, $data)
 	{
-		$this->db->update('tblservices', $data, $where);
+		$this->db->where('service_id',$where);
+		$this->db->update('tblservices', $data);
 		return $this->db->affected_rows();
 	}
 

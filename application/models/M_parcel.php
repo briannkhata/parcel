@@ -15,11 +15,8 @@ class M_parcel extends CI_Model
 			->from('tblparcels')
 			->where('deleted', 0);
 		$query = $this->db->get();
-		if ($query->num_rows() > 0) {
-			return $query->result_array();
-		} else {
-			return null;
-		}
+		return $query->result_array();
+		
 	}
 
 	function get_parcel_by_id($parcel_id)
@@ -51,13 +48,15 @@ class M_parcel extends CI_Model
 
 	function update_parcel($where, $data)
 	{
-		$this->db->update('tblparcels', $data, $where);
+		$this->db->where('parcel_id',$where);
+		$this->db->update('tblparcels', $data);
 		return $this->db->affected_rows();
 	}
 
 	function delete_parcel($where, $data)
 	{
-		$this->db->update('tblparcels', $data, $where);
+		$this->db->where('parcel_id',$where);
+		$this->db->update('tblparcels', $data);
 		return $this->db->affected_rows();
 	}
 
