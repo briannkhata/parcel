@@ -22,8 +22,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="exampleInputEmail1">Alt Phone</label>
-                <input type="tel" class="form-control" name="alt_phone" value="<?=$row['alt_phone'];?>"
-                    required>
+                <input type="tel" class="form-control" name="alt_phone" value="<?=$row['alt_phone'];?>">
             </div>
         </div>
 

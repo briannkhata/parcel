@@ -26,7 +26,6 @@ class User extends CI_Controller
 		$this->check_session();
 		$page_data['page_title'] = 'Settings';
 		$page_data['settings'] = $this->M_user->get_settings();
-		;
 		$this->load->view($this->session->userdata('role') . '/settings', $page_data);
 	}
 
@@ -39,7 +38,8 @@ class User extends CI_Controller
 			'email' => $this->input->post('email'),
 			'address' => $this->input->post('address'),
 		);
-		$this->M_user->update_settings($this->input->post('id'), $data);
+		$id = $this->input->post('id');
+		$this->M_user->update_settings($id, $data);
 		$this->session->set_flashdata('message', 'Settings saved successfully');
 		redirect('User/settings');
 	}

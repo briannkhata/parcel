@@ -1,6 +1,7 @@
 <?php include'/../header.php';?>
 <div class="portlet-body">
-
+<a href="<?=base_url();;?>Status/read" class="btn btn-primary btn-sm black"><i class="fa fa-plus"></i> Add New</a>
+<hr>
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
