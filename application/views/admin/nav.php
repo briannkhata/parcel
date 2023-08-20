@@ -37,12 +37,12 @@
 
 
 					<li>
-						<a href="<?= base_url(); ?>Parcel/add_parcel">
+						<a href="<?= base_url(); ?>Parcel/read">
 							<i class="fa fa-circle"></i>
 							Add Parcel</a>
 					</li>
 					<li>
-						<a href="<?= base_url(); ?>Parcel/parcels">
+						<a href="<?= base_url(); ?>Parcel">
 							<i class="fa fa-circle"></i>
 							Parcel List</a>
 					</li>

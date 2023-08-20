@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-class branch extends CI_Controller {
+class Branch extends CI_Controller {
 
 		function __construct()
 		{
@@ -41,18 +41,18 @@ class branch extends CI_Controller {
 		{
 			$this->check_session();
 			$data = $this->get_data_from_post();
-			$update_id = $this->input->post('update_id', TRUE);
+			$update_id = $this->input->post('update_id');
 			if (isset($update_id)){
 				$this->M_branch->update_branch($update_id, $data);
 			 }else{
 				$this->M_branch->add_branch($data);
 			}
 
-			$this->session->set_flashdata('message','branch saved successfully');
+			$this->session->set_flashdata('message','Branch saved successfully');
 			if($update_id !=''):
-				redirect('branch/');
+				redirect('Branch/');
 			else:
-				redirect('branch/read');
+				redirect('Branch/read');
 			endif;
 		}
 	
@@ -80,8 +80,8 @@ class branch extends CI_Controller {
 			$this->check_session();
 			$data['deleted'] =  0;
 			$this->db->update_branch($param, $data);
-			$this->session->set_flashdata('message','branch disabled successfully');
-			redirect('branch');
+			$this->session->set_flashdata('message','Branch disabled successfully');
+			redirect('Branch');
 		}
 			  
 }

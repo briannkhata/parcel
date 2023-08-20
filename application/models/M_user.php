@@ -100,6 +100,19 @@ class M_user extends CI_Model
 		} else {
 			return '';
 		}
+	}
+
+	function get_branch_id($user_id)
+	{
+		$this->db->where('user_id', $user_id);
+		$query = $this->db->get('tblusers')->result_array();
+		if (count($query) > 0) {
+			foreach ($query as $row) {
+				return $row['branch_id'];
+			}
+		} else {
+			return '';
+		}
 
 	}
 
