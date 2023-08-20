@@ -9,8 +9,8 @@
                 <th style="width:3%;">#</th>
                 <th>Sender Details</th>
                 <th>Receiver Details</th>
-                <th>Branch From</th>
-                <th>Branch To</th>
+                <th>Sending Office</th>
+                <th>Destination Office</th>
                 <th>Package Type</th>
                 <th>Service Type</th>
                 <th>Weight</th>
@@ -56,7 +56,7 @@
                         <?= $row['weight']; ?>
                     </td>
                     <td>
-                        <?= $row['charge']; ?>
+                        <?= number_format($row['charge'],2); ?>
                     </td>
                     <td>
                         <?= $row['edd']; ?>
@@ -71,10 +71,13 @@
                         <?= $row['tracking_code']; ?>
                     </td>
                     <td>
-                        <a href="<?= base_url(); ?>parcel/read/<?= $row['parcel_id']; ?>"
-                            class="btn btn-primary btn-sm black"><i class="fa fa-edit"></i></a>
-                        <a href="<?= base_url(); ?>parcel/delete/<?= $row['parcel_id']; ?>"
-                            class="btn btn-danger btn-sm black"><i class="fa fa-times-circle"></i></a>
+                        <a href="<?= base_url(); ?>Parcel/read/<?= $row['parcel_id']; ?>"
+                            class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Edit</a>
+
+                            <a href="<?= base_url(); ?>Parcel/view/<?= $row['parcel_id']; ?>"
+                            class="btn btn-success btn-sm"><i class="fa fa-info-circle"></i> View Details</a>
+                        <a href="<?= base_url(); ?>Parcel/delete/<?= $row['parcel_id']; ?>"
+                            class="btn btn-danger btn-sm"><i class="fa fa-times-circle"></i> remove</a>
                     </td>
                 </tr>
             <?php endforeach; ?>

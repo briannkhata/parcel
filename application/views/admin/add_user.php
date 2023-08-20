@@ -64,10 +64,9 @@
                 <label for="exampleInputEmail1">Role</label>
                 <select name="role" class="form-control" required="">
                     <option selected disabled>Role</option>
-                    <option <?php if ($role == 'user')
-                        echo 'selected'; ?> value="user">Normal User</option>
-                    <option <?php if ($role == 'admin')
-                        echo 'selected'; ?> value="admin">Administrator</option>
+                    <option <?=$role == 'user'? 'selected':''; ?> value="user">Normal User</option>
+                    <option <?=$role == 'report'? 'selected':''; ?> value="report">Report View</option>
+                    <option <?=$role == 'admin' ? 'selected':''; ?> value="admin">Administrator</option>
                 </select>
             </div>
         </div>
@@ -78,8 +77,7 @@
                 <select name="branch_id" class="form-control" required="">
                     <option selected disabled>branch</option>
                     <?php foreach ($this->M_branch->get_branches() as $row) { ?>
-                        <option <?php if ($branch_id == $row['branch_id'])
-                            echo 'selected'; ?> value="<?= $row['branch_id']; ?>">
+                        <option <?=$branch_id == $row['branch_id'] ? 'selected':''; ?> value="<?= $row['branch_id']; ?>">
                             <?= $row['branch']; ?></option>
                     <?php } ?>
                 </select>

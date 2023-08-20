@@ -22,7 +22,7 @@
 <div class="col-md-6">
     <div class="form-group">
         <label for="exampleInputEmail1">Exact Location</label>
-        <textarea name="rlocation" class="form-control" required><?= !empty($rlocation) ? $locations : ""; ?></textarea>
+        <textarea name="rlocation" class="form-control" required><?= !empty($rlocation) ? $rlocation : ""; ?></textarea>
     </div>
 </div>
 

@@ -29,7 +29,7 @@
         <select name="package_type_id" class="form-control" required="">
             <option selected disabled>package type</option>
             <?php foreach ($this->M_package_type->get_package_types() as $row) { ?>
-                <option <?= !empty($package_type_id) ? "selected" : ""; ?> value="<?= $row['package_type_id']; ?>">
+                <option <?= $row['package_type_id'] == $package_type_id ? "selected" : ""; ?> value="<?= $row['package_type_id']; ?>">
                     <?= $row['package_type']; ?></option>
             <?php } ?>
         </select>
@@ -42,7 +42,7 @@
         <select name="service_id" class="form-control" required="">
             <option selected disabled>Service type</option>
             <?php foreach ($this->M_service->get_services() as $row) { ?>
-                <option <?= !empty($service_id) ? "selected" : ""; ?> value="<?= $row['service_id']; ?>">
+                <option <?= $row['service_id'] == $service_id ? "selected" : ""; ?> value="<?= $row['service_id']; ?>">
                     <?= $row['service']; ?></option>
             <?php } ?>
         </select>
@@ -55,7 +55,7 @@
         <select name="rbranch_id" class="form-control" required="">
             <option selected disabled>Destination branch</option>
             <?php foreach ($this->M_branch->get_branches() as $row) { ?>
-                <option <?= !empty($rbranch_id) ? "selected" : ""; ?> value="<?= $row['branch_id']; ?>">
+                <option <?= $row['branch_id'] == $rbranch_id ? "selected" : ""; ?> value="<?= $row['branch_id']; ?>">
                     <?= $row['branch']; ?></option>
             <?php } ?>
         </select>
@@ -68,7 +68,7 @@
         <select name="status_id" class="form-control" required="">
             <option selected disabled>Status</option>
             <?php foreach ($this->M_status->get_statuses() as $row) { ?>
-                <option <?= !empty($status_id) ? "selected" : ""; ?> value="<?= $row['status_id']; ?>">
+                <option <?= $row['status_id'] == $status_id ? "selected" : ""; ?> value="<?= $row['status_id']; ?>">
                     <?= $row['status_name']; ?></option>
             <?php } ?>
         </select>

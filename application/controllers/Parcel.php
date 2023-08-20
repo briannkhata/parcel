@@ -22,6 +22,15 @@ class Parcel extends CI_Controller
 		$this->load->view($this->session->userdata('role') . '/parcels', $page_data);
 	}
 
+	function view($param='')
+	{
+		$this->check_session();
+		$page_data['page_title'] = 'Parcel Details';
+		$page_data['parcel'] = $this->M_parcel->get_parcel_by_id($param);
+		$this->load->view($this->session->userdata('role') . '/view_parcel', $page_data);
+	}
+
+
 	function get_data_from_post()
 	{
 		$data = array(
@@ -91,7 +100,7 @@ class Parcel extends CI_Controller
 			$this->M_parcel->add_parcel($data);
 		}
 
-		$this->session->set_flashdata('message', 'parcel saved successfully');
+		$this->session->set_flashdata('message', 'Parcel saved successfully');
 		if ($update_id != ''):
 			redirect('Parcel');
 		else:
