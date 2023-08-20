@@ -1,4 +1,4 @@
-	<?php include'/../header.php';?>
+<?php $this->load->view('header.php');?>
 			<!-- BEGIN SIDEBAR -->
 	<div class="page-content-wrapper">
 		<div class="page-content">
@@ -152,4 +152,4 @@
 	<!-- END CONTENT -->
 </div>
 <!-- END CONTAINER -->
-<?php include'/../footer.php';?>
+<?php $this->load->view('footer.php');?>

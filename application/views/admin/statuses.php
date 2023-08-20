@@ -1,4 +1,4 @@
-<?php include'/../header.php';?>
+<?php $this->load->view('header.php');?>
 <div class="portlet-body">
 <a href="<?=base_url();;?>Status/read" class="btn btn-primary btn-sm black"><i class="fa fa-plus"></i> Add New</a>
 <hr>
@@ -31,4 +31,4 @@
     </table>
 
 </div>
-<?php include'/../footer.php';?>
+<?php $this->load->view('footer.php');?>

@@ -1,4 +1,4 @@
-<?php include '/../header.php'; ?>
+<?php $this->load->view('header.php');?>
 
 <div class="portlet-body">
     <form role="form" action="<?= base_url(); ?>User/save" method="post">
@@ -104,4 +104,4 @@
 
 </div>
 
-<?php include '/../footer.php'; ?>
+<?php $this->load->view('footer.php');?>
